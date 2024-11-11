@@ -1,0 +1,80 @@
+baraff1:
+  type: article
+  title: "An Introduction to Physically Based Modeling: Rigid Body Simulation I—Unconstrained Rigid Body Dynamics"
+  author: David Baraff
+  url: https://www.cs.cmu.edu/~baraff/sigcourse/notesd1.pdf
+
+baraff2:
+  type: article
+  title: "An Introduction to Physically Based Modeling: Rigid Body Simulation II—Nonpenetration Constraints"
+  author: David Baraff
+  url: https://www.cs.cmu.edu/~baraff/sigcourse/notesd2.pdf
+
+rstar:
+  type: article
+  title: "The R*-tree: An Efficient and Robust Access Method for Points and Rectangles+"
+  author: [Norbert Beckmann, Hans-Peterbegel, Ralf Schneider, Bernhard Seeger]
+  url: https://infolab.usc.edu/csci599/Fall2001/paper/rstar-tree.pdf
+
+gjk:
+  type: article
+  title: "A Fast Procedure for Computing the Distance Between Complex Objects in Three-Dimensional Space"
+  author: [Elmer G. Gilbert, Daniel W. Johnson, S. Sathiya Keerthi]
+  url: https://graphics.stanford.edu/courses/cs448b-00-winter/papers/gilbert.pdf
+
+dyn4j-gjk:
+  type: article
+  title: "GJK (Gilbert–Johnson–Keerthi)"
+  author: William Bittle
+  url: https://dyn4j.org/2010/04/gjk-gilbert-johnson-keerthi/
+  parent:
+    type: blog
+    url: https://dyn4j.org/blog/
+
+dyn4j-epa:
+  type: article
+  title: "EPA (Expanding Polytope Algorithm)"
+  author: William Bittle
+  url: https://dyn4j.org/2010/05/epa-expanding-polytope-algorithm/
+  parent:
+    type: blog
+    url: https://dyn4j.org/blog/
+
+shadow-mapping:
+  type: article
+  title: "Shadow Mapping"
+  author: Joey de Vries
+  url: https://learnopengl.com/Advanced-Lighting/Shadows/Shadow-Mapping
+
+cascaded:
+  type: article
+  title: Cascaded Shadow Maps
+  author: Rouslan Dimitrov
+  url: https://developer.download.nvidia.com/SDK/10.5/opengl/src/cascaded_shadow_maps/doc/cascaded_shadow_maps.pdf
+
+pcf:
+  type: chapter
+  title: Chapter 17. Efficient Soft-Edged Shadows Using Pixel Shader Branching
+  author: Yury Uralsky
+  url: https://developer.nvidia.com/gpugems/gpugems2/part-ii-shading-lighting-and-shadows/chapter-17-efficient-soft-edged-shadows-using
+  parent:
+    type: book
+    title: GPU Gems 2
+
+esm:
+  type: article
+  title: Exponential Shadow Maps
+  author: [Thomas Annen, Tom Mertens, Hans-Peter Seidel, Eddy Flerackers, Jan Kautz]
+  url: https://jankautz.com/publications/esm_gi08.pdf
+
+str:
+  type: report
+  title: "STR: A SIMPLE AND EFFICIENT ALGORITHM FOR R-TREE PACKING"
+  author: [Scott T. Leutenegger, Jeffrey M. Edgington, Mario A. Lopez]
+  url: https://apps.dtic.mil/sti/pdfs/ADA324493.pdf
+
+omt:
+  type: article
+  title: "OMT: Overlap Minimizing Top-down Bulk Loading Algorithm for R-Tree"
+  author: [Taewon Lee, Sukho Lee]
+  url: http://ftp.informatik.rwth-aachen.de/Publications/CEUR-WS/Vol-74/files/FORUM_18.pdf

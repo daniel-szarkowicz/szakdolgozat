@@ -1,0 +1,1 @@
+Gyors és biztonságos nyelv.
