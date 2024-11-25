@@ -1,5 +1,5 @@
 #import "@preview/cetz:0.2.2"
-#let todo = text.with(red)
+#import "../templ.typ": todo, todo_image
 
 = GJK
 Egy elterjedt ütközés detektálási algoritmus a Gilbert-Johnson-Keerthi @gjk
@@ -130,13 +130,13 @@ pontot a különbség support functionjétől, ha talált távolabbi pontot, akk
 kiegészíti a politópot az új ponttal, ha nem talált távolabbi pontot, akkor
 megtaláltuk a Minkowski különbség legközelebbi felszíni pontját.
 
-// #figure(
-//   todo_image[EPA],
-//   caption: [
-//     Az EPA felfedte a Minkowski különbség egy részét, amíg megtalálta a
-//     legközelebbi felszíni pontot.
-//   ]
-// )
+#figure(
+  todo_image[EPA],
+  caption: [
+    Az EPA felfedte a Minkowski különbség egy részét, amíg megtalálta a
+    legközelebbi felszíni pontot.
+  ]
+)
 
 A politóp bővítése nem egy könnyű feladat, ugyanis ha hozzáadunk egy új pontot
 a politóphoz, akkor ki kell számolni, hogy milyen régi oldalakat kell kitörölni,
@@ -151,4 +151,34 @@ A szimuláció @dyn4j-epa által bemutatott 2 dimenziós algoritmusnak egy 3
 dimenziós generalizációját használja.
 
 = Ütközési pontok kiszámítása
-#todo[Polygon vetítés + clipping] #todo[dyn4j-clipping]
+A GJK és az EPA csak egy ütközési pontot adnak, amely pillanatnyi érintkezésnél
+elfogadható, de #todo[Nyugalmi érintkezés]-nél nem.
+
+Több ütközési pontot úgy kaphatunk, hogy az ütközési normál mentén lekérjük
+a ütköző testeknek "legjobb" oldalait, ezeknek az oldalakna vesszük a
+meteszetét az ütközési normál szerint és a metszet pontjaiból választunk
+néhányat az ütközési pontoknak.
+
+== Oldalak kiszámítása
+A "legjobb" oldalak kiszámítása a test alakjától függ.
+
+Egy gömbnek a legjobb oldala a gömb középpontjából és sugarából könnyen
+kiszámolható.
+
+Egy kocka legjobb oldalához ki kell számolni minden oldal normálvektorának
+a szögét az ütközési normállal, kiválasztjuk a legkisebb szöget és a hozzá
+tartozó oldalt adjuk vissza.
+
+== Oldalak metszete
+
+Az oldalak metszetéhez egy közös síkra kell vetíteni az oldalakat, utána egy 2
+dimenziós algoritmussal vesszük az oldalak metszetét, végül a normál vektor
+mentén visszavetítjük az oldalakat a saját síkjukra.
+
+Normál vektor síkjára vetítés:
+$ p_n = p + (p_0 - p) dot hat(n) dot hat(n) $
+
+Eredeti síkra vetítés a normál vektor mentén:
+$ p' = p'_n - ((p'_n - p'_0) dot hat(n')) / (hat(n) dot hat(n')) dot hat(n) $
+
+Az oldalak metszetének kiszámolásához a #todo[clipper2]-t használtam.

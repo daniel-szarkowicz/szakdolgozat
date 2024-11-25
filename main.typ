@@ -18,7 +18,7 @@
 #chapter[Rust]
 #include "chapters/rust.typ"
 
-#chapter[Merevtest-szimuláció matematikája]
+#chapter[Merevtestek matematikája]
 #include "chapters/rigidbody_math.typ"
 
 #chapter[Ütközés detektálás]
