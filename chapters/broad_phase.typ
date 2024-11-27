@@ -1,5 +1,5 @@
 #import "@preview/cetz:0.2.2"
-#let todo = text.with(red)
+#import "../templ.typ": todo, todo_image
 
 Az összes pár megvizsgálása $O(n^2)$ lenne, ami nagyon lassú. Szerencsére
 a legtöbb test nem ütközik, ezért egy megfelelő heurisztikával sokat lehet
@@ -10,10 +10,10 @@ dolgozni, a következő algoritmusok axis-aligned bounding boxokat (AABB)
 használnak. Az AABB-k olyan téglatestek, amik tartalmazzák az az egész testet és
 az oldalai párhuzamosak a koordináta-rendszer tengelyeivel.
 
-// #figure(
-//   image("sphere_aabb_cropped.png", width: 6cm),
-//   caption: [Egy gömbnek az AABB-je.]
-// )
+#figure(
+  todo_image("sphere_aabb_cropped.png", width: 6cm),
+  caption: [Egy gömbnek az AABB-je.]
+)
 
 = Sort-and-Sweep
 A sort and sweep @baraff2 egy egyszerű algoritmus az ellenőrzött párok
@@ -98,13 +98,13 @@ algoritmus van: legjobb csúcs kiválasztása a beillesztéshez, és legjobb vá
 kiszámítása, ha egy csúcs megtelt. A szimuláció a beillesztéshez a legkisebb
 térfogat növekedést választja, a vágáshoz a Quadratic split-et @rstar használ.
 
-// #figure(
-//   image("rtree_cropped.png", width: 6cm),
-//   caption: [
-//     Egy 3 dimenziós R-Tree kettő szintje. Látható, hogy néha átfedik egymást
-//     a csomópontok (piros AABB-k). Az átfedéseket érdemes minimalizálni.
-//   ]
-// )
+#figure(
+  todo_image("rtree_cropped.png", width: 6cm),
+  caption: [
+    Egy 3 dimenziós R-Tree kettő szintje. Látható, hogy néha átfedik egymást
+    a csomópontok (piros AABB-k). Az átfedéseket érdemes minimalizálni.
+  ]
+)
 
 Az R-Tree-k felépítéséhez és karbantartásához számos algoritmus jött létre.
 
@@ -116,4 +116,33 @@ Az STR @str és az OMT @omt nem egyesével építi fel a fát, hanem egyszerre
 dolgozik az összes adattal, így közel tökéletes fákat tudnak felépíteni.
 
 = OMT
-#todo[OMT]
+Az Overlap Minimizing R-Tree egy bulk-loading algoritmus, amely az eredeti
+R-Tree felépítésével ellentétben nem egyesével építi fel a fát, hanem egyszerre.
+
+Ezzel a módszerrel hatékonyabb keresőfát tudunk felépíteni, ugyanis az
+algoritmus törekszik minimalizálni a részei között az átfedést.
+
+== Az algoritmus
+
+Az algoritmus egy lépés ismétel addig, amíg a legalsó csúcshoz tartozó levelek
+száma kisebb, mint egy határ érték. Ez a lépés a csúcs leveleit a következő
+módon bontja $N$ egyenlő részre:
++ vágások kiszámítása mindhárom dimenzió szerint #todo[Appendix]
++ rendezés az első dimenzió szerint
++ vágás az első dimenzió szerint
++ vágások rendezése a második dimenzió szerint
++ vágás a második dimenzió szerint
++ vágások rendezése a harmadik dimenzió szerint
++ vágás a harmadik dimenzió szerint
+
+#figure(
+  todo_image[OMT],
+  caption: [
+    Az Overlap Minimizing R-Tree. Látható, hogy sokkal kevesebb az átfedés,
+    mint az R-Tree-ben.
+  ]
+)
+
+Az OMT-vel generált fát az összes többi R-Tree algoritmussal használhatjuk
+tovább. A fizikai motor csak a keresést használja az R-Tree-ből, mert jelenleg
+minden ciklusban újraépíti a fát.
