@@ -18,7 +18,7 @@ módon áll kapcsolatban a sebességgel:
 $
   p(t) = m dot v(t)
 $
-Ennek az előnyeiről bővebben az #todo[ütközés] fejezetben fogok írni.
+Ennek az előnyeiről bővebben az @ütközésválasz fejezetben fogok írni.
 
 = Forgás
 A testek forgása a test mozgásához hasonlóan kezelhető. A testnek van egy
@@ -60,7 +60,7 @@ A szimulációban a tehetetlenségi nyomatéknak csak az inverzét használjuk, 
 mindig perdületből konvertálunk szögsebességbe, ezért a tehetetlenségi
 nyomatéknak az inverzét tárolja.
 
-= Ütközésválasz
+= Ütközésválasz <ütközésválasz>
 
 == Impulzus és szögimpulzus
 A szimulációban a testek nem deformálódhatnak és nem metszhetik egymást, ezért
@@ -110,7 +110,7 @@ $
   ])
 $
 
-== Normál irányú impulzus
+== Normál irányú impulzus <norm_impulse>
 #let vlr = $v_(l r)$
 #let vlr2 = $v'_(l r)$
 #let dvlrn = $Delta v_(l r,n)$
