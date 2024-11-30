@@ -1,5 +1,5 @@
 #let todo = text.with(red)
-#let todo_image(content, width: 5cm, height: 5cm) = {
+#let todo_image(content, width: 10cm, height: 10cm) = {
   rect(width: width, height: height, stroke: red)[
     #v(1fr)
     #todo(content)
@@ -85,7 +85,7 @@
 }
 
 #let format(digital: false, body) = {
-  set text(font: "New Computer Modern", lang: "hu")
+  set text(font: "New Computer Modern", size: 12pt, lang: "hu")
   set heading(numbering: "1.")
   let margin = if digital {
     (left: 3.5cm, rest: 2.5cm)

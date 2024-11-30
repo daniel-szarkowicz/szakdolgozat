@@ -1,15 +1,17 @@
-#import "@preview/cetz:0.2.2"
 #import "templ.typ": template, todo, todo_image, chapter
 
 #show: template.with(
-  title: [Fizikai motor fejlesztése Rust nyelven],
+  title: [Fizikai motor fejlesztése\ Rust nyelven],
   subtitle: [Szakdolgozat],
   author: [Szarkowicz Dániel],
   consulent: [Fridvalszky András],
   digital: true
 )
 
-#chapter(numbering: none)[Bevezetés]
+#chapter(numbering: none)[Kivonat]
+#include "chapters/abstract.typ"
+
+#chapter[Bevezetés]
 #include "chapters/introduction.typ"
 
 #chapter[Fizikai motorok]
