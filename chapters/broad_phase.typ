@@ -127,7 +127,7 @@ algoritmus törekszik minimalizálni a részei között az átfedést.
 Az algoritmus egy lépés ismétel addig, amíg a legalsó csúcshoz tartozó levelek
 száma kisebb, mint egy határ érték. Ez a lépés a csúcs leveleit a következő
 módon bontja $N$ egyenlő részre:
-+ vágások kiszámítása mindhárom dimenzió szerint #todo[Appendix]
++ vágások kiszámítása mindhárom dimenzió szerint (@omt_split függelék)
 + rendezés az első dimenzió szerint
 + vágás az első dimenzió szerint
 + vágások rendezése a második dimenzió szerint

@@ -38,5 +38,18 @@
 #chapter[Eredmények]
 #include "chapters/results.typ"
 
+#let appendix(body) = {
+  heading(level: 1, numbering: none)[Függelék]
+  set heading(numbering: (..numbers) => {
+    let nums = numbers.pos()
+    let _ = nums.remove(0)
+    numbering("A.", ..nums)
+  })
+  body
+}
+
+#show: appendix
+#include "chapters/appendix.typ"
+
 #set heading(offset: 0)
 #bibliography("references.yml")
