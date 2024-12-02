@@ -1,8 +1,29 @@
 = Box2D
-2 Dimenziós fizikai motor C-ben
+A Box2D egy 2 dimenziós fizikai motor, amelyet a C programozási nyelvben írtak.\
+A motor sok féle szimulációt támogat:
+- ütközés
+- tapadási és csúszási súrlódás
+- jointok
+- ragdollok
+- ray casting
+
+A motor egy iteratív megoldást használ a korlátok megoldására, és így is
+jó minőségű stabil szimulációkat tud produkálni. Sok objektumot képes
+valós időben szimulálni, így számos videojáték használja.\
+Néhány híres videojáték:
+- Angry Birds
+- Happy Wheels
+- Limbo
+- Showel Knight
+
+A Box2D-t egy egyszerű C API-n keresztül lehet használni, számos nyelvhez
+készültek hozzá binding-ok és a legtöbb játékmotorban is használható beépítve
+vagy egy bővítményként.
 
 = Rapier
-2 és 3 Dimenziós fizikai motor Rust-ban
+A Rapier egy 2 és 3 dimenziós fizikai motor, amelyet a Rust programozási nyelven
+írtak. A motor hasonló funkciókat támogat, mint a Box2D. Nagy hangsúlyt
+helyez a determinizmusra, akár különböző architektúrájú platformokon is.
 
-= PhysX
-valami valami nvidia
+A Rapier-t egy egyszerű Rust API-n keresztül lehet használni és számos modern
+játékmotorban használható.
