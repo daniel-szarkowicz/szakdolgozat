@@ -1,28 +1,28 @@
 = OMT vágások kiszámítása <omt_split>
 
-#let todo_counter = counter("__todo__")
+// #let todo_counter = counter("__todo__")
 
-#let list_todos() = context [
-  #for i in range(0, todo_counter.final().at(0)) [
-    #link(label("__todo__" + str(i)), "click")
-  ]
-]
+// #let list_todos() = context [
+//   #for i in range(0, todo_counter.final().at(0)) [
+//     #link(label("__todo__" + str(i)), "click")
+//   ]
+// ]
 
-#list_todos()
+// #list_todos()
 
-#let todo(body) = context [
-  #text(red, body)
-  #label("__todo__" + str(todo_counter.get().at(0)))
-  #todo_counter.step()
-]
+// #let todo(body) = context [
+//   #text(red, body)
+//   #label("__todo__" + str(todo_counter.get().at(0)))
+//   #todo_counter.step()
+// ]
 
-#todo[a]
+// #todo[a]
 
-#todo[b]
+// #todo[b]
 
-#todo[c]
+// #todo[c]
 
-#context todo_counter.final()
+// #context todo_counter.final()
 
 Az OMT a szinteket "felülről-lefelé" építi fel, de egy adott szinten a vágásokat
 "alulról-felfelé" számoljuk ki a következő módon:

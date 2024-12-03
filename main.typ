@@ -26,7 +26,7 @@
 #chapter[Ütközés detektálás]
 #include "chapters/collision_detection.typ"
 
-#chapter[Ütközés detektálás gyorsítása]
+#chapter[Ütközés detektálás gyorsítása] <broad_phase>
 #include "chapters/broad_phase.typ"
 
 #chapter[Nyugalmi érintkezés]
