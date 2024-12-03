@@ -1,6 +1,78 @@
 #import "@preview/cetz:0.2.2"
 #import "../templ.typ": todo, todo_image
 
+= Egyszerű gömb ütközés <sphere-collision>
+A szimuláció eleinte csak gömböket támogatott, mert azokra a legegyszerűbb
+kiszámolni, hogy ütköznek-e.
+
+Két gömb akkor ütközik, ha a középpontjaik távolsága kisebb, mint a sugaraik
+összege:
+$
+  |bold(c_1) - bold(c_2)| < r_1 + r_2
+$
+Ha ütköznek, akkor az ütközési normál:
+$
+  bold(n) = (bold(c_1) - bold(c_2))/(|bold(c_1) - bold(c_2)|)
+$
+és az ütközési pontok:
+$
+  bold(p_1) = bold(c_1) - r_1 bold(n)\
+  bold(p_2) = bold(c_2) + r_2 bold(n)
+$
+
+#figure(
+  cetz.canvas({
+    import cetz.draw: *
+    let angle = 45deg
+    let radius = 2
+    let normal = (calc.cos(angle), calc.sin(angle))
+    let tangent = (normal.at(1), -normal.at(0))
+    let contact = normal.map(it => radius * it)
+    let c1 = (0, 0)
+    let c2 = contact.map(it => 2 * it)
+    let v1 = (0, 1.5)
+    let v2 = (0, -1.5)
+    circle(radius: radius, c1)
+    circle(radius: radius, c2)
+    line(
+      contact,
+      contact.zip(normal).map(((it1, it2)) => it1 + it2 * radius * 0.9),
+      stroke: red,
+      mark: (end: ">")
+    )
+    line(
+      contact.zip(tangent).map(((it1, it2)) => it1 + it2 * radius * 1.9),
+      contact.zip(tangent).map(((it1, it2)) => it1 - it2 * radius * 1.9),
+      stroke: red
+    )
+    line(
+      c1,
+      c1.zip(v1).map(((it1, it2)) => it1 + it2),
+      stroke: green, mark: (end: ">")
+    )
+    line(
+      c2,
+      c2.zip(v2).map(((it1, it2)) => it1 + it2),
+      stroke: green, mark: (end: ">")
+    )
+    line(
+      c1,
+      c1.zip(v2.rev()).map(((it1, it2)) => it1 + it2),
+      stroke: blue, mark: (end: ">")
+    )
+    line(
+      c2,
+      c2.zip(v1.rev()).map(((it1, it2)) => it1 + it2),
+      stroke: blue, mark: (end: ">")
+    )
+  }),
+  caption: [
+    Két gömb ütközik, #text(red)[piros] az ütközési felület és normál,
+    #text(green)[zöld] az ütközés előtti sebességek,
+    #text(blue)[kék] az ütközés utáni sebességek
+  ]
+)
+
 = GJK
 Egy elterjedt ütközés detektálási algoritmus a Gilbert-Johnson-Keerthi @gjk
 algoritmus, ami tetszőleges konvex testek távolságát tudja meghatározni, ha a
@@ -113,7 +185,7 @@ generalizációját használja.
 
 A GJK könnyen használható gömbileg kiterjesztett testekre, például egy gömbre
 vagy kapszulára, hiszen a két test legközelebbi pontja adott és sugara adott,
-innentől a #todo[sphere-collision] fejezetben írt módon lehet kiszámolni, hogy a két
+innentől a @sphere-collision fejezetben írt módon lehet kiszámolni, hogy a két
 test ütközik-e, és ha igen, akkor mik az ütközési paramétereik.
 
 = EPA
