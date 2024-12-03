@@ -45,6 +45,7 @@
     let _ = nums.remove(0)
     numbering("A.", ..nums)
   })
+  counter(heading).update(0)
   body
 }
 
