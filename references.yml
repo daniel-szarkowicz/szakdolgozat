@@ -84,3 +84,20 @@ clipper2:
   title: clipper2
   author: Fredrik Söderström
   url: https://crates.io/crates/clipper2
+
+nalgebra:
+  type: web
+  title: nalgebra
+  author: [Sébastien Crozet, Emilia Bopp]
+  url: https://crates.io/crates/nalgebra
+
+box2d:
+  type: web
+  title: Box2D
+  author: Erin Catto
+  url: https://box2d.org/
+
+rapier:
+  type: web
+  title: Rapier physics engine
+  url: https://rapier.rs/

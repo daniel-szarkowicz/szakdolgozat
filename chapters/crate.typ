@@ -227,6 +227,16 @@ Létrehoz egy statikus testet a szimulációban. Ha ezt a metódust nem hívjuk 
 akkor nem jön létre a test, hiába használtuk a `World::add_staticbody`
 metódust.
 
+= Külső könyvtárak
+
+Az elkészített könyvtár kettő külső könyvtártól függ közvetlenül.
+
+Az első könyvtár a nalgebra @nalgebra. A nalgebra egy általános lineáris
+algebra könyvtár amely a vektor, mátrix és kvaternió típusokat szolgáltatja.
+
+A második könyvtár a clipper2 @clipper2. A clipper2 könyvtár számolja az
+ütközési pontoknál a síkidomok metszetét.
+
 = Példa kód
 A könyvtárban egy `World` típusú objektum reprezentálja a fizikai világot, ezt
 a következő módon hozhatjuk létre:

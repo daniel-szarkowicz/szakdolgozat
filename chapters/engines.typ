@@ -1,5 +1,5 @@
 = Box2D
-A Box2D egy 2 dimenziós fizikai motor, amelyet a C programozási nyelvben írtak.\
+A Box2D @box2d egy 2 dimenziós fizikai motor, amelyet a C programozási nyelvben írtak.\
 A motor sok féle szimulációt támogat:
 - ütközés
 - tapadási és csúszási súrlódás
@@ -21,7 +21,7 @@ készültek hozzá binding-ok és a legtöbb játékmotorban is használható be
 vagy egy bővítményként.
 
 = Rapier
-A Rapier egy 2 és 3 dimenziós fizikai motor, amelyet a Rust programozási nyelven
+A Rapier @rapier egy 2 és 3 dimenziós fizikai motor, amelyet a Rust programozási nyelven
 írtak. A motor hasonló funkciókat támogat, mint a Box2D. Nagy hangsúlyt
 helyez a determinizmusra, akár különböző architektúrájú platformokon is.
 
