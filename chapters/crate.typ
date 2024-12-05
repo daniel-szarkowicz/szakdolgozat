@@ -1,10 +1,5 @@
 #import "../templ.typ": todo
 
-#show raw: it => {
-  let f = if it.block { block.with(width: 100%) } else { box }
-  f(it, fill: rgb("eeeeee"), radius: 0.3em, outset: 0.3em)
-}
-
 = Példa kód
 A könyvtárban egy `World` típusú objektum reprezentálja a fizikai világot, ezt
 a következő módon hozhatjuk létre:

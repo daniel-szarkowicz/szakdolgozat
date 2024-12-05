@@ -73,7 +73,7 @@ $
   ]
 )
 
-= GJK
+= Gilbert-Johnson-Keerthi algoritmus
 Egy elterjedt ütközés detektálási algoritmus a Gilbert-Johnson-Keerthi @gjk
 algoritmus, ami tetszőleges konvex testek távolságát tudja meghatározni, ha a
 testekre definiálva van a support function. A support functionnek egy adott
@@ -84,7 +84,12 @@ az origó. Ha a különbségben benne van az origó, akkor ütközést talált, 
 különbségben nincs benne az origó, akkor Minkowski különbség és az origó
 távolsága a két test távolsága. A Minkowski különbség legközelebbi pontjából
 ki lehet fejteni a két test legközelebbi pontját is.
-#let minkowskidiff(triangle_position, square_position, drawline: false) = {
+#let minkowskidiff(
+  triangle_position,
+  square_position,
+  drawline: false,
+  e1: false, e2: false
+) = {
   cetz.canvas({
     import cetz.draw: *
     import cetz.plot
@@ -121,10 +126,23 @@ ki lehet fejteni a két test legközelebbi pontját is.
           alldiff.at(8),
           alldiff.at(9),
         )
+        let epa1 = (
+          alldiff.at(7),
+          alldiff.at(8),
+          alldiff.at(9),
+        )
+        let epa2 = (
+          alldiff.at(4),
+          alldiff.at(7),
+          alldiff.at(9),
+          alldiff.at(8),
+        )
         plot.annotate({
           line(..triangle, close: true)
           line(..square, close: true)
           line(..minkowskidiff, close: true, stroke: green)
+          if e1 { line(..epa1, close: true, stroke: red) }
+          if e2 { line(..epa2, close: true, stroke: red) }
           if drawline {
             line(triangle.at(1), square.at(0), stroke: red)
             line((0, 0), minkowskidiff.at(3), stroke: red)
@@ -429,7 +447,7 @@ vagy kapszulára, hiszen a két test legközelebbi pontja és sugara adott,
 innentől a @sphere-collision fejezetben írt módon lehet kiszámolni, hogy a két
 test ütközik-e, és ha igen, akkor mik az ütközési paramétereik.
 
-= EPA
+= Expanding Polytope Algorithm
 A GJK egyik hiányossága, hogy ha két test ütközik, akkor csak annyit mond, hogy
 ütköznek, nem ad nekünk használható ütközési paramétereket. Az EPA úgy segít,
 hogy a GJK-ból kapott szimplexet iteratívan bővíti újabb pontokkal, amíg
@@ -443,11 +461,22 @@ pontot a különbség support functionjétől, ha talált távolabbi pontot, akk
 kiegészíti a politópot az új ponttal, ha nem talált távolabbi pontot, akkor
 megtaláltuk a Minkowski különbség legközelebbi felszíni pontját.
 
+// #figure(
+//   todo_image[EPA],
+//   caption: [
+//     Az EPA felfedte a Minkowski különbség egy részét, amíg megtalálta a
+//     legközelebbi felszíni pontot.
+//   ]
+// )
 #figure(
-  todo_image[EPA],
+  grid(columns: 2, gutter: 10pt,
+    minkowskidiff((-3, 3.7), (-2, 4), e1: true),
+    minkowskidiff((-3, 3.7), (-2, 4), e2: true),
+  ),
   caption: [
-    Az EPA felfedte a Minkowski különbség egy részét, amíg megtalálta a
-    legközelebbi felszíni pontot.
+    Bal oldal: az EPA egy lehetséges kezdő állapota. Jobb oldal: az EPA
+    megtalálta az origóhoz legközelebbi oldalt, hiszen a legközelebbi oldal
+    irányába nem tud messzebb menni.
   ]
 )
 

@@ -129,6 +129,16 @@
   }
   set heading(offset: 1)
   set par(justify: true)
+
+  show raw: it => {
+    let params = (fill: rgb("eeeeee"), radius: 0.3em, outset: 0.3em)
+    if it.block {
+      block(it, width: 100%, ..params)
+    } else {
+      box(it, ..params)
+    }
+  }
+
   body
 }
 
