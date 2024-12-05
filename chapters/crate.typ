@@ -206,7 +206,7 @@ akkor nem jön létre a test, hiába használtuk a `World::add_rigidbody`
 metódust.
 
 == StaticbodyBuilder
-Segít létrehozni egy új merev testet a szimulációban.
+Segít létrehozni egy új statikus testet a szimulációban.
 
 === Metódusok
 `pub fn new(world: &'w mut World, shape: Shape) -> Self`\
