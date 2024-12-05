@@ -78,3 +78,9 @@ omt:
   title: "OMT: Overlap Minimizing Top-down Bulk Loading Algorithm for R-Tree"
   author: [Taewon Lee, Sukho Lee]
   url: http://ftp.informatik.rwth-aachen.de/Publications/CEUR-WS/Vol-74/files/FORUM_18.pdf
+
+clipper2:
+  type: web
+  title: clipper2
+  author: Fredrik Söderström
+  url: https://crates.io/crates/clipper2

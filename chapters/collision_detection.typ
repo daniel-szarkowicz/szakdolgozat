@@ -407,7 +407,10 @@ háromszögekre lesz bemutatva.
     cetz.canvas({ asdf(ab: 1, bc: 1, ca: 1, orig1: true) }),
   ),
   caption: [
-    Az origó a háromszög közepén van. Az algoritmus 3 vágásból látta be.
+    Bal oldal: az első vágás megállapította, hogy az origó az $A B$ oldalhoz
+    képest belül van, ezért az $A B$ oldalon kívüli félteret kizárhatjuk.
+    Jobb oldal: három vágással megállapítottuk, mindhárom oldalon belül van az
+    origó, azaz a szimplex tartalmazza az origót.
   ]
 )
 
@@ -429,7 +432,10 @@ háromszögekre lesz bemutatva.
     cetz.canvas({ asdf(ab: -1, aba: 1, abb: 1, orig2: true) }),
   ),
   caption: [
-    Az origó az $A B$ szakasz mellett van. Az algoritmus 3 vágásból látta be.
+    Az első lépésben meghatároztuk, hogy az origó az $A B$ oldalon kívülre
+    esik. A második lépésben kizártuk az $A B$ oldal szerint az $A$-n túli
+    félteret. Végül a harmadik lépésben kizártuk a $B$-n túli félteret is,
+    az origóhoz legközelebbi részszimplex az $A B$ szakasz.
   ]
 )
 
@@ -461,13 +467,6 @@ pontot a különbség support functionjétől, ha talált távolabbi pontot, akk
 kiegészíti a politópot az új ponttal, ha nem talált távolabbi pontot, akkor
 megtaláltuk a Minkowski különbség legközelebbi felszíni pontját.
 
-// #figure(
-//   todo_image[EPA],
-//   caption: [
-//     Az EPA felfedte a Minkowski különbség egy részét, amíg megtalálta a
-//     legközelebbi felszíni pontot.
-//   ]
-// )
 #figure(
   grid(columns: 2, gutter: 10pt,
     minkowskidiff((-3, 3.7), (-2, 4), e1: true),
@@ -494,7 +493,7 @@ dimenziós generalizációját használja.
 
 = Ütközési pontok kiszámítása
 A GJK és az EPA csak egy ütközési pontot adnak, amely pillanatnyi érintkezésnél
-elfogadható, de #todo[Nyugalmi érintkezés]-nél nem.
+elfogadható (bár nem helyes), de nyugalmi érintkezésnél nem.
 
 Több ütközési pontot úgy kaphatunk, hogy az ütközési normál mentén lekérjük
 a ütköző testeknek "legjobb" oldalait, ezeknek az oldalakna vesszük a
@@ -507,9 +506,8 @@ A "legjobb" oldalak kiszámítása a test alakjától függ.
 Egy gömbnek a legjobb oldala a gömb középpontjából és sugarából könnyen
 kiszámolható.
 
-Egy kocka legjobb oldalához ki kell számolni minden oldal normálvektorának
-a szögét az ütközési normállal, kiválasztjuk a legkisebb szöget és a hozzá
-tartozó oldalt adjuk vissza.
+Egy kockánál azt az oldalt választjuk ki, amelynek a normálja a legkisebb
+szöget zárna be az ütközési normállal.
 
 == Oldalak metszete
 
@@ -523,4 +521,5 @@ $ p_n = p + (p_0 - p) dot hat(n) dot hat(n) $
 Eredeti síkra vetítés a normál vektor mentén:
 $ p' = p'_n - ((p'_n - p'_0) dot hat(n')) / (hat(n) dot hat(n')) dot hat(n) $
 
-Az oldalak metszetének kiszámolásához a #todo[clipper2]-t használtam.
+Az oldalak metszetének kiszámolásához a clipper2 @clipper2 könyvtárat
+használtam.
