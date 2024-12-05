@@ -14,7 +14,7 @@ az oldalai párhuzamosak a koordináta-rendszer tengelyeivel.
 #figure(
   cetz.canvas({
     import cetz.draw: *
-    rect((-5, -5), (5, 5), stroke: black)
+    rect((-5, -5), (5, 5), stroke: none)
     line((-4.5, -4.5), (-4.5, -1.5), (-1.5, -1.5), (-1.5, -4.5), close: true, stroke: red)
     circle((-3, -3), radius: 1.5)
 
@@ -123,7 +123,7 @@ lehet, hogy csak a pároknak egy kis részét dobjuk el.
           sas_circle(3.6, 4.4, 0.25)
 
           sas_circle(5, 1, 0.35)
-          // sas_circle(5.05, 1.75, 0.25)
+          sas_circle(5.05, 1.75, 0.25)
           sas_circle(5.4, 3.6, 0.25)
           // sas_circle(5, 3.25, 0.25)
           // sas_circle(4.9, 4, 0.25)
@@ -134,9 +134,8 @@ lehet, hogy csak a pároknak egy kis részét dobjuk el.
     )
   }),
   caption: [
-    A sort and sweep algoritmus intervallumai az $x$ tengely szering. A jobb
-    oldalon látható, hogy ha rossz tengelyt választunk, akkor nem segít sokat az
-    algoritmus.
+    A sort-and-sweep algoritmus intervallumai az $x$ tengely szering. Ha sok
+    test a tengely mentén egy vonalba esik, akkor kevésbé segít az algoritmus.
   ]
 )
 
@@ -335,28 +334,17 @@ módon bontja $N$ egyenlő részre:
   }
 }
 
-// #let color(d) = if d == 2 {
-//   red
-// } else {
-//   white
-// }
-
 #let draw_tree(tree, depth: -1) = {
   if depth != 0 {
     if type(tree) == dictionary {
-      let stroke_width = if depth < 0 {
-        1pt
-      } else {
-        // depth * 2pt
+      for child in tree.children {
+        draw_tree(child, depth: depth - 1)
       }
       if depth == 2 {
         draw_aabb(tree.aabb, stroke: 0.5pt + red)
       }
       if depth == 3 {
         draw_aabb(tree.aabb, stroke: 1pt + blue)
-      }
-      for child in tree.children {
-        draw_tree(child, depth: depth - 1)
       }
     } else {
       draw_aabb(tree)
