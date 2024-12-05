@@ -101,3 +101,18 @@ rapier:
   type: web
   title: Rapier physics engine
   url: https://rapier.rs/
+
+rust:
+  type: web
+  title: Rust Programming Language
+  url: https://www.rust-lang.org/
+
+cratesio:
+  type: web
+  title: Rust Package Registry
+  url: https://crates.io/
+
+wgpu:
+  type: web
+  title: Portable graphics library for Rust
+  url: https://wgpu.rs/
